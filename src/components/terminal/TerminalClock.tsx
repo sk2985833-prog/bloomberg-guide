@@ -8,22 +8,23 @@ const TerminalClock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const marketOpen = time.getHours() >= 9 && time.getHours() < 16;
+  const nyHour = new Date(time.toLocaleString("en-US", { timeZone: "America/New_York" })).getHours();
+  const marketOpen = nyHour >= 9 && nyHour < 16;
 
   return (
-    <div className="flex items-center gap-3 font-mono-terminal text-xs">
-      <div className="flex items-center gap-1.5">
-        <span className={`w-2 h-2 rounded-full ${marketOpen ? "bg-terminal-green animate-pulse" : "bg-terminal-red"}`} />
-        <span className={marketOpen ? "text-terminal-green" : "text-terminal-red"}>
-          {marketOpen ? "MKT OPEN" : "MKT CLOSED"}
+    <div className="flex items-center gap-2 font-mono-terminal text-[10px]">
+      <div className="flex items-center gap-1">
+        <span className={`w-1.5 h-1.5 rounded-full ${marketOpen ? "bg-terminal-green animate-pulse" : "bg-terminal-red"}`} />
+        <span className={`font-semibold ${marketOpen ? "text-terminal-green" : "text-terminal-red"}`}>
+          {marketOpen ? "NYSE OPEN" : "NYSE CLOSED"}
         </span>
       </div>
       <span className="text-muted-foreground">│</span>
-      <span className="text-terminal-amber tabular-nums">
-        {time.toLocaleTimeString("en-US", { hour12: false })}
+      <span className="text-terminal-amber tabular-nums font-semibold">
+        {time.toLocaleTimeString("en-US", { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" })}
       </span>
-      <span className="text-muted-foreground">
-        {time.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })}
+      <span className="text-muted-foreground tabular-nums">
+        {time.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "2-digit" }).toUpperCase()}
       </span>
     </div>
   );
