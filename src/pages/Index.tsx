@@ -12,7 +12,7 @@ import CryptoPanel from "@/components/terminal/CryptoPanel";
 import FunctionBar from "@/components/terminal/FunctionBar";
 
 const Index = () => {
-  const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock } = useMarketData();
+  const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock, isLive } = useMarketData();
   const [activeTab, setActiveTab] = useState<string>("EQUITY");
 
   const handleSelectBySymbol = (symbol: string) => {
