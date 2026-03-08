@@ -5,7 +5,7 @@ interface TickerBarProps {
   indices: MarketIndex[];
 }
 
-const TickerBar = ({ stocks, indices }: TickerBarProps) => {
+const TickerBar = ({ stocks = [], indices = [] }: TickerBarProps) => {
   const allItems = [
     ...indices.slice(0, 6).map(idx => ({
       symbol: idx.name,
