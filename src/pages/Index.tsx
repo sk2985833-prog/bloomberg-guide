@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useMarketData } from "@/hooks/useMarketData";
 import TerminalClock from "@/components/terminal/TerminalClock";
 import TickerBar from "@/components/terminal/TickerBar";
@@ -6,9 +7,13 @@ import StockDetail from "@/components/terminal/StockDetail";
 import NewsPanel from "@/components/terminal/NewsPanel";
 import MarketOverview from "@/components/terminal/MarketOverview";
 import CommandBar from "@/components/terminal/CommandBar";
+import BondsPanel from "@/components/terminal/BondsPanel";
+import CryptoPanel from "@/components/terminal/CryptoPanel";
+import FunctionBar from "@/components/terminal/FunctionBar";
 
 const Index = () => {
-  const { stocks, indices, forex, commodities, news, selectedStock, setSelectedStock } = useMarketData();
+  const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock } = useMarketData();
+  const [activeTab, setActiveTab] = useState<string>("EQUITY");
 
   const handleSelectBySymbol = (symbol: string) => {
     const stock = stocks.find(s => s.symbol === symbol);
@@ -16,41 +21,67 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-background overflow-hidden">
-      {/* Header */}
-      <header className="border-b border-border bg-card px-4 py-1.5 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-3">
-          <h1 className="text-lg font-bold font-mono-terminal text-terminal-green glow-green tracking-tighter">
-            BLOOMBERG<span className="text-terminal-amber">®</span>
-          </h1>
-          <span className="text-[10px] font-mono-terminal text-muted-foreground border border-border px-1.5 py-0.5 rounded-sm">TERMINAL</span>
+    <div className="h-screen flex flex-col bg-background overflow-hidden select-none">
+      {/* Top Menu Bar */}
+      <header className="border-b border-border bg-card flex items-center justify-between flex-shrink-0 h-7">
+        <div className="flex items-center h-full">
+          <div className="bg-terminal-amber px-3 h-full flex items-center">
+            <span className="text-[11px] font-mono-terminal font-bold tracking-tight" style={{ color: 'hsl(222, 22%, 5%)' }}>
+              BB
+            </span>
+          </div>
+          <div className="flex items-center gap-0 h-full">
+            {["MARKETS", "SECURITIES", "MONITOR", "PORTFOLIO", "NEWS", "ANALYTICS"].map(item => (
+              <button
+                key={item}
+                className="px-2.5 h-full text-[10px] font-mono-terminal text-muted-foreground hover:text-terminal-amber hover:bg-muted/50 transition-colors tracking-wider"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
-        <TerminalClock />
+        <div className="flex items-center gap-2 px-2">
+          <TerminalClock />
+        </div>
       </header>
 
-      {/* Ticker */}
-      <TickerBar stocks={stocks} />
+      {/* Function Keys Bar */}
+      <FunctionBar activeTab={activeTab} onTabChange={setActiveTab} />
 
-      {/* Main Grid */}
-      <div className="flex-1 grid grid-cols-12 grid-rows-2 gap-px bg-border overflow-hidden">
-        {/* Watchlist - left column */}
-        <div className="col-span-4 row-span-2 bg-card overflow-hidden">
+      {/* Ticker */}
+      <TickerBar stocks={stocks} indices={indices} />
+
+      {/* Main Grid - Bloomberg 4-panel layout */}
+      <div className="flex-1 flex overflow-hidden" style={{ gap: '1px', background: 'hsl(222, 16%, 10%)' }}>
+        {/* Left Column - Watchlist */}
+        <div className="w-[340px] flex-shrink-0 bg-card overflow-hidden flex flex-col">
           <WatchlistPanel stocks={stocks} selectedStock={selectedStock} onSelectStock={setSelectedStock} />
         </div>
 
-        {/* Stock Detail - top middle */}
-        <div className="col-span-5 row-span-1 bg-card overflow-hidden">
-          <StockDetail stock={selectedStock} />
+        {/* Center Column */}
+        <div className="flex-1 flex flex-col overflow-hidden" style={{ gap: '1px' }}>
+          {/* Top - Stock Detail / Chart */}
+          <div className="flex-1 bg-card overflow-hidden min-h-0">
+            <StockDetail stock={selectedStock} />
+          </div>
+          {/* Bottom - News */}
+          <div className="h-[240px] flex-shrink-0 bg-card overflow-hidden">
+            <NewsPanel news={news} />
+          </div>
         </div>
 
-        {/* Market Overview - top right */}
-        <div className="col-span-3 row-span-2 bg-card overflow-hidden">
-          <MarketOverview indices={indices} forex={forex} commodities={commodities} />
-        </div>
-
-        {/* News Feed - bottom middle */}
-        <div className="col-span-5 row-span-1 bg-card overflow-hidden">
-          <NewsPanel news={news} />
+        {/* Right Column - Market Data */}
+        <div className="w-[320px] flex-shrink-0 flex flex-col overflow-hidden" style={{ gap: '1px' }}>
+          <div className="flex-1 bg-card overflow-hidden min-h-0">
+            <MarketOverview indices={indices} forex={forex} commodities={commodities} />
+          </div>
+          <div className="h-[140px] flex-shrink-0 bg-card overflow-hidden">
+            <BondsPanel bonds={bonds} />
+          </div>
+          <div className="h-[140px] flex-shrink-0 bg-card overflow-hidden">
+            <CryptoPanel crypto={crypto} />
+          </div>
         </div>
       </div>
 

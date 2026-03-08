@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,51 +6,55 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 140 60% 75%;
+    --background: 222 22% 5%;
+    --foreground: 60 5% 84%;
 
-    --card: 220 18% 7%;
-    --card-foreground: 140 50% 70%;
+    --card: 222 20% 7%;
+    --card-foreground: 60 5% 84%;
 
-    --popover: 220 18% 7%;
-    --popover-foreground: 140 50% 70%;
+    --popover: 222 20% 7%;
+    --popover-foreground: 60 5% 84%;
 
-    --primary: 140 70% 45%;
-    --primary-foreground: 220 20% 4%;
+    --primary: 33 100% 50%;
+    --primary-foreground: 222 22% 5%;
 
-    --secondary: 35 90% 55%;
-    --secondary-foreground: 220 20% 4%;
+    --secondary: 33 90% 55%;
+    --secondary-foreground: 222 22% 5%;
 
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 222 16% 11%;
+    --muted-foreground: 222 10% 45%;
 
     --accent: 200 80% 55%;
-    --accent-foreground: 220 20% 4%;
+    --accent-foreground: 222 22% 5%;
 
-    --destructive: 0 70% 50%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 140 30% 18%;
-    --input: 220 15% 15%;
-    --ring: 140 70% 45%;
+    --border: 222 16% 14%;
+    --input: 222 16% 13%;
+    --ring: 33 100% 50%;
 
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
-    --terminal-green: 140 70% 45%;
-    --terminal-amber: 35 90% 55%;
-    --terminal-cyan: 185 80% 55%;
-    --terminal-red: 0 70% 55%;
-    --terminal-blue: 210 80% 60%;
-    --terminal-dim: 140 20% 30%;
+    --terminal-green: 120 60% 50%;
+    --terminal-amber: 33 100% 50%;
+    --terminal-cyan: 185 75% 55%;
+    --terminal-red: 0 72% 55%;
+    --terminal-blue: 210 75% 60%;
+    --terminal-dim: 120 15% 28%;
+    --terminal-orange: 25 95% 53%;
+    --terminal-yellow: 48 96% 53%;
+    --terminal-magenta: 300 60% 60%;
+    --terminal-white: 60 5% 90%;
 
-    --sidebar-background: 220 18% 7%;
-    --sidebar-foreground: 140 50% 70%;
-    --sidebar-primary: 140 70% 45%;
-    --sidebar-primary-foreground: 220 20% 4%;
-    --sidebar-accent: 220 15% 12%;
-    --sidebar-accent-foreground: 140 50% 70%;
-    --sidebar-border: 140 30% 18%;
-    --sidebar-ring: 140 70% 45%;
+    --sidebar-background: 222 20% 7%;
+    --sidebar-foreground: 60 5% 84%;
+    --sidebar-primary: 33 100% 50%;
+    --sidebar-primary-foreground: 222 22% 5%;
+    --sidebar-accent: 222 16% 11%;
+    --sidebar-accent-foreground: 60 5% 84%;
+    --sidebar-border: 222 16% 14%;
+    --sidebar-ring: 33 100% 50%;
   }
 }
 
@@ -61,13 +65,31 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar - Bloomberg style */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
   }
 }
 
 @layer utilities {
   .font-mono-terminal {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
   }
   .text-terminal-green {
     color: hsl(var(--terminal-green));
@@ -87,6 +109,18 @@
   .text-terminal-dim {
     color: hsl(var(--terminal-dim));
   }
+  .text-terminal-orange {
+    color: hsl(var(--terminal-orange));
+  }
+  .text-terminal-yellow {
+    color: hsl(var(--terminal-yellow));
+  }
+  .text-terminal-magenta {
+    color: hsl(var(--terminal-magenta));
+  }
+  .text-terminal-white {
+    color: hsl(var(--terminal-white));
+  }
   .bg-terminal-green {
     background-color: hsl(var(--terminal-green));
   }
@@ -102,22 +136,56 @@
   .bg-terminal-blue {
     background-color: hsl(var(--terminal-blue));
   }
+  .bg-terminal-orange {
+    background-color: hsl(var(--terminal-orange));
+  }
   .border-terminal-green {
     border-color: hsl(var(--terminal-green));
   }
+  .border-terminal-amber {
+    border-color: hsl(var(--terminal-amber));
+  }
   .glow-green {
-    text-shadow: 0 0 10px hsl(140 70% 45% / 0.5), 0 0 20px hsl(140 70% 45% / 0.2);
+    text-shadow: 0 0 8px hsl(120 60% 50% / 0.6), 0 0 16px hsl(120 60% 50% / 0.2);
   }
   .glow-amber {
-    text-shadow: 0 0 10px hsl(35 90% 55% / 0.5), 0 0 20px hsl(35 90% 55% / 0.2);
+    text-shadow: 0 0 8px hsl(33 100% 50% / 0.6), 0 0 16px hsl(33 100% 50% / 0.2);
   }
-  .scanline {
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      hsl(140 70% 45% / 0.03) 2px,
-      hsl(140 70% 45% / 0.03) 4px
-    );
+  .glow-red {
+    text-shadow: 0 0 8px hsl(0 72% 55% / 0.6);
+  }
+
+  .bb-panel {
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+  }
+
+  .bb-panel-header {
+    @apply px-2 py-1 border-b font-mono-terminal text-[10px] font-semibold uppercase tracking-widest;
+    border-color: hsl(var(--border));
+    background: hsl(222 20% 8%);
+  }
+
+  .bb-row-hover {
+    @apply transition-colors;
+  }
+  .bb-row-hover:hover {
+    background: hsl(222 16% 11% / 0.6);
+  }
+
+  .flash-green {
+    animation: flashGreen 0.4s ease-out;
+  }
+  .flash-red {
+    animation: flashRed 0.4s ease-out;
+  }
+
+  @keyframes flashGreen {
+    0% { background-color: hsl(120 60% 50% / 0.15); }
+    100% { background-color: transparent; }
+  }
+  @keyframes flashRed {
+    0% { background-color: hsl(0 72% 55% / 0.15); }
+    100% { background-color: transparent; }
   }
 }
