@@ -1,1 +1,4 @@
 project_id = "qbzcfpebwahepzhowkhu"
+
+[functions.finnhub-proxy]
+verify_jwt = false

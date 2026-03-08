@@ -12,7 +12,7 @@ import CryptoPanel from "@/components/terminal/CryptoPanel";
 import FunctionBar from "@/components/terminal/FunctionBar";
 
 const Index = () => {
-  const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock } = useMarketData();
+  const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock, isLive } = useMarketData();
   const [activeTab, setActiveTab] = useState<string>("EQUITY");
 
   const handleSelectBySymbol = (symbol: string) => {
@@ -42,6 +42,12 @@ const Index = () => {
           </div>
         </div>
         <div className="flex items-center gap-2 px-2">
+          {isLive && (
+            <div className="flex items-center gap-1 mr-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-terminal-green animate-pulse" />
+              <span className="text-[9px] font-mono-terminal text-terminal-green">LIVE</span>
+            </div>
+          )}
           <TerminalClock />
         </div>
       </header>
