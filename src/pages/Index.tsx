@@ -82,10 +82,10 @@ const Index = () => {
           <div className="flex-1 bg-card overflow-hidden min-h-0">
             <MarketOverview indices={indices} forex={forex} commodities={commodities} />
           </div>
-          <div className="h-[140px] flex-shrink-0 bg-card overflow-hidden">
+          <div className="h-[120px] flex-shrink-0 bg-card overflow-hidden">
             <BondsPanel bonds={bonds} />
           </div>
-          <div className="h-[140px] flex-shrink-0 bg-card overflow-hidden">
+          <div className="flex-1 min-h-[180px] bg-card overflow-hidden">
             <CryptoPanel crypto={crypto} />
           </div>
         </div>
