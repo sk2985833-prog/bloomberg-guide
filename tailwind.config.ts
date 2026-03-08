@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ['JetBrains Mono', 'monospace'],
-        sans: ['Inter', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'JetBrains Mono', 'monospace'],
+        sans: ['IBM Plex Mono', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,6 +61,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        terminal: {
+          green: "hsl(var(--terminal-green))",
+          amber: "hsl(var(--terminal-amber))",
+          cyan: "hsl(var(--terminal-cyan))",
+          red: "hsl(var(--terminal-red))",
+          blue: "hsl(var(--terminal-blue))",
+          dim: "hsl(var(--terminal-dim))",
+          orange: "hsl(var(--terminal-orange))",
+          yellow: "hsl(var(--terminal-yellow))",
+          magenta: "hsl(var(--terminal-magenta))",
+          white: "hsl(var(--terminal-white))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -89,7 +101,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "blink": "blink 1s step-end infinite",
-        "ticker": "ticker 30s linear infinite",
+        "ticker": "ticker 40s linear infinite",
       },
     },
   },
