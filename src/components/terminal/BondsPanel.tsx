@@ -13,7 +13,7 @@ const BondsPanel = ({ bonds }: BondsPanelProps) => {
         <span className="text-muted-foreground">YIELDS</span>
       </div>
       <div className="flex-1 overflow-auto px-1.5 py-1">
-        {bonds.map(b => {
+        {bonds.slice(0, 8).map(b => {
           const pos = b.change >= 0;
           return (
             <div key={b.name} className="flex justify-between items-center py-[2px] bb-row-hover px-1">
