@@ -164,16 +164,16 @@ const initialBonds: BondData[] = [
 ];
 
 const initialCrypto: CryptoData[] = [
-  { symbol: "BTC", name: "Bitcoin", price: 68425.80, change: 1842.30, changePercent: 2.77, marketCap: "1.34T" },
-  { symbol: "ETH", name: "Ethereum", price: 3542.15, change: 78.40, changePercent: 2.26, marketCap: "425B" },
-  { symbol: "SOL", name: "Solana", price: 148.92, change: -3.28, changePercent: -2.16, marketCap: "66B" },
-  { symbol: "BNB", name: "Binance Coin", price: 584.30, change: 12.80, changePercent: 2.24, marketCap: "87B" },
-  { symbol: "XRP", name: "Ripple", price: 0.5284, change: 0.0124, changePercent: 2.40, marketCap: "29B" },
-  { symbol: "ADA", name: "Cardano", price: 0.4812, change: -0.0086, changePercent: -1.76, marketCap: "17B" },
-  { symbol: "DOGE", name: "Dogecoin", price: 0.1642, change: 0.0082, changePercent: 5.25, marketCap: "23B" },
-  { symbol: "DOT", name: "Polkadot", price: 7.84, change: -0.12, changePercent: -1.51, marketCap: "10B" },
-  { symbol: "AVAX", name: "Avalanche", price: 38.42, change: 1.24, changePercent: 3.33, marketCap: "14B" },
-  { symbol: "LINK", name: "Chainlink", price: 15.28, change: 0.42, changePercent: 2.82, marketCap: "9B" },
+  { symbol: "BTC", name: "Bitcoin", price: 68705.18, change: 1599.27, changePercent: 2.38, marketCap: "1.36T" },
+  { symbol: "ETH", name: "Ethereum", price: 2023.03, change: 82.54, changePercent: 4.25, marketCap: "243B" },
+  { symbol: "SOL", name: "Solana", price: 84.99, change: 3.37, changePercent: 4.13, marketCap: "42B" },
+  { symbol: "BNB", name: "Binance Coin", price: 612.40, change: 8.60, changePercent: 1.42, marketCap: "91B" },
+  { symbol: "XRP", name: "Ripple", price: 2.1842, change: 0.0524, changePercent: 2.46, marketCap: "126B" },
+  { symbol: "ADA", name: "Cardano", price: 0.7245, change: -0.0142, changePercent: -1.92, marketCap: "26B" },
+  { symbol: "DOGE", name: "Dogecoin", price: 0.1724, change: 0.0068, changePercent: 4.11, marketCap: "25B" },
+  { symbol: "DOT", name: "Polkadot", price: 4.52, change: -0.08, changePercent: -1.74, marketCap: "7B" },
+  { symbol: "AVAX", name: "Avalanche", price: 22.18, change: 0.84, changePercent: 3.94, marketCap: "9B" },
+  { symbol: "LINK", name: "Chainlink", price: 14.62, change: 0.38, changePercent: 2.67, marketCap: "9B" },
 ];
 
 // ═══════════════════ NEWS POOL ═══════════════════
