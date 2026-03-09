@@ -386,16 +386,17 @@ export function useMarketData() {
   useEffect(() => {
     const interval = setInterval(() => {
       setStocks(prev => prev.map(stock => {
-        const newPrice = randomFluctuation(stock.price, 0.12);
-        const newChange = Math.round((newPrice - stock.open) * 100) / 100;
-        const newChangePercent = stock.open ? Math.round((newChange / stock.open) * 10000) / 100 : 0;
+        const newPrice = randomFluctuation(stock.price, 0.03);
+        const prevClose = stock.price - stock.change;
+        const newChange = Math.round((newPrice - prevClose) * 100) / 100;
+        const newChangePercent = prevClose ? Math.round((newChange / prevClose) * 10000) / 100 : 0;
         return {
           ...stock, price: newPrice, change: newChange, changePercent: newChangePercent,
           high: Math.max(stock.high, newPrice), low: Math.min(stock.low, newPrice),
           history: [...stock.history.slice(1), newPrice],
         };
       }));
-    }, 1200);
+    }, 1500);
     return () => clearInterval(interval);
   }, []);
 
