@@ -456,11 +456,12 @@ export function useMarketData() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCrypto(prev => prev.map(c => {
-        const newPrice = randomFluctuation(c.price, 0.3);
-        const newChange = Math.round((newPrice - (c.price - c.change)) * 100) / 100;
-        return { ...c, price: newPrice, change: newChange, changePercent: Math.round((newChange / (newPrice - newChange)) * 10000) / 100 };
+        const newPrice = randomFluctuation(c.price, 0.08);
+        const prevClose = c.price - c.change;
+        const newChange = Math.round((newPrice - prevClose) * 100) / 100;
+        return { ...c, price: newPrice, change: newChange, changePercent: prevClose ? Math.round((newChange / prevClose) * 10000) / 100 : 0 };
       }));
-    }, 2000);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
