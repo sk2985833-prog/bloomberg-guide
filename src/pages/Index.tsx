@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMarketData } from "@/hooks/useMarketData";
 import TerminalClock from "@/components/terminal/TerminalClock";
 import TickerBar from "@/components/terminal/TickerBar";
