@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMarketData } from "@/hooks/useMarketData";
 import TerminalClock from "@/components/terminal/TerminalClock";
 import TickerBar from "@/components/terminal/TickerBar";
@@ -30,6 +30,24 @@ const Index = () => {
       setActiveTab("EQUITY");
     }
   };
+
+  // F1-F12 keyboard shortcuts
+  useEffect(() => {
+    const fKeyMap: Record<string, string> = {
+      F1: "HELP", F2: "GOVT", F3: "CORP", F4: "EQUITY",
+      F5: "CMDTY", F6: "INDEX", F7: "CRNCY", F8: "M&A",
+      F9: "TRADE", F10: "PORT", F11: "NEWS", F12: "MSG",
+    };
+    const handler = (e: KeyboardEvent) => {
+      const tab = fKeyMap[e.key];
+      if (tab) {
+        e.preventDefault();
+        setActiveTab(tab);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   // Determine if we should show a full-screen view
   const isFullScreenTab = !["EQUITY"].includes(activeTab);
