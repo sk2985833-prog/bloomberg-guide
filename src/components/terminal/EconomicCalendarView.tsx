@@ -321,7 +321,7 @@ const EconomicCalendarView = () => {
               {/* Chart */}
               <div className="h-[140px] border-b border-border px-2 py-1">
                 <div className="text-[8px] font-mono-terminal text-muted-foreground mb-1">HISTORICAL TREND (24 PERIODS)</div>
-                <AssetChart data={selectedEvent.history} color="hsl(var(--terminal-amber))" height={110} />
+                <AssetChart history={selectedEvent.history} label={selectedEvent.indicator} currentValue={selectedEvent.actual} positive={selectedEvent.actual >= selectedEvent.previous} width={296} height={110} />
               </div>
 
               {/* Data cards */}
