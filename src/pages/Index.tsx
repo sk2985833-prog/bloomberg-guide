@@ -18,6 +18,7 @@ import CryptoView from "@/components/terminal/CryptoView";
 import NewsView from "@/components/terminal/NewsView";
 import AnalyticsView from "@/components/terminal/AnalyticsView";
 import HelpView from "@/components/terminal/HelpView";
+import EconomicCalendarView from "@/components/terminal/EconomicCalendarView";
 
 const Index = () => {
   const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock, isLive } = useMarketData();
