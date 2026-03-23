@@ -18,6 +18,7 @@ import CryptoView from "@/components/terminal/CryptoView";
 import NewsView from "@/components/terminal/NewsView";
 import AnalyticsView from "@/components/terminal/AnalyticsView";
 import HelpView from "@/components/terminal/HelpView";
+import EconomicCalendarView from "@/components/terminal/EconomicCalendarView";
 
 const Index = () => {
   const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock, isLive } = useMarketData();
@@ -36,7 +37,7 @@ const Index = () => {
     const fKeyMap: Record<string, string> = {
       F1: "HELP", F2: "GOVT", F3: "CORP", F4: "EQUITY",
       F5: "CMDTY", F6: "INDEX", F7: "CRNCY", F8: "M&A",
-      F9: "TRADE", F10: "PORT", F11: "NEWS", F12: "MSG",
+      F9: "TRADE", F10: "PORT", F11: "NEWS", F12: "ECON",
     };
     const handler = (e: KeyboardEvent) => {
       const tab = fKeyMap[e.key];
@@ -63,7 +64,7 @@ const Index = () => {
       case "TRADE": return <AnalyticsView stocks={stocks} indices={indices} crypto={crypto} commodities={commodities} />;
       case "PORT": return <AnalyticsView stocks={stocks} indices={indices} crypto={crypto} commodities={commodities} />;
       case "NEWS": return <NewsView news={news} />;
-      case "MSG": return <HelpView />;
+      case "ECON": return <EconomicCalendarView />;
       default: return null;
     }
   };
