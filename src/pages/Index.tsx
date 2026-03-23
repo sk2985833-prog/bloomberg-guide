@@ -64,7 +64,7 @@ const Index = () => {
       case "TRADE": return <AnalyticsView stocks={stocks} indices={indices} crypto={crypto} commodities={commodities} />;
       case "PORT": return <AnalyticsView stocks={stocks} indices={indices} crypto={crypto} commodities={commodities} />;
       case "NEWS": return <NewsView news={news} />;
-      case "MSG": return <EconomicCalendarView />;
+      case "ECON": return <EconomicCalendarView />;
       default: return null;
     }
   };
