@@ -15,7 +15,7 @@ const functionKeys = [
   { key: "F9", label: "TRADE", color: "text-terminal-cyan" },
   { key: "F10", label: "PORT", color: "text-terminal-cyan" },
   { key: "F11", label: "NEWS", color: "text-terminal-cyan" },
-  { key: "F12", label: "MSG", color: "text-terminal-cyan" },
+  { key: "F12", label: "ECON", color: "text-terminal-cyan" },
 ];
 
 const FunctionBar = ({ activeTab, onTabChange }: FunctionBarProps) => {

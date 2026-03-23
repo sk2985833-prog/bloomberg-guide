@@ -37,7 +37,7 @@ const Index = () => {
     const fKeyMap: Record<string, string> = {
       F1: "HELP", F2: "GOVT", F3: "CORP", F4: "EQUITY",
       F5: "CMDTY", F6: "INDEX", F7: "CRNCY", F8: "M&A",
-      F9: "TRADE", F10: "PORT", F11: "NEWS", F12: "MSG",
+      F9: "TRADE", F10: "PORT", F11: "NEWS", F12: "ECON",
     };
     const handler = (e: KeyboardEvent) => {
       const tab = fKeyMap[e.key];
