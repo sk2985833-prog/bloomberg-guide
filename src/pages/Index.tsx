@@ -19,6 +19,8 @@ import NewsView from "@/components/terminal/NewsView";
 import AnalyticsView from "@/components/terminal/AnalyticsView";
 import HelpView from "@/components/terminal/HelpView";
 import EconomicCalendarView from "@/components/terminal/EconomicCalendarView";
+import MAView from "@/components/terminal/MAView";
+import PortfolioView from "@/components/terminal/PortfolioView";
 
 const Index = () => {
   const { stocks, indices, forex, commodities, bonds, crypto, news, selectedStock, setSelectedStock, isLive } = useMarketData();
@@ -60,9 +62,9 @@ const Index = () => {
       case "INDEX": return <IndexView indices={indices} />;
       case "CRNCY": return <CrncyView forex={forex} />;
       case "CMDTY": return <CmdtyView commodities={commodities} />;
-      case "M&A": return <CryptoView crypto={crypto} />; // placeholder
+      case "M&A": return <MAView />;
       case "TRADE": return <AnalyticsView stocks={stocks} indices={indices} crypto={crypto} commodities={commodities} />;
-      case "PORT": return <AnalyticsView stocks={stocks} indices={indices} crypto={crypto} commodities={commodities} />;
+      case "PORT": return <PortfolioView stocks={stocks} />;
       case "NEWS": return <NewsView news={news} />;
       case "ECON": return <EconomicCalendarView />;
       default: return null;
