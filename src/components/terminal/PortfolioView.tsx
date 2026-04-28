@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import AssetChart from "./AssetChart";
-import type { Stock } from "@/hooks/useMarketData";
+import type { StockData } from "@/hooks/useMarketData";
 
 interface Position {
   id: string;
@@ -12,7 +12,7 @@ interface Position {
 }
 
 interface PortfolioViewProps {
-  stocks: Stock[];
+  stocks: StockData[];
 }
 
 const INITIAL_POSITIONS: Position[] = [
